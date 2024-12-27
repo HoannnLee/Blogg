@@ -1,0 +1,39 @@
+
+
+<% cache @product do %>
+
+    <div class="container">
+      <div class="Frame-item-buy">      
+        <div class="row">
+          <div class="col PC-6 Tb-12">
+            <div class="item-image__frame">
+                  <div class="frame-image">
+                         <%= image_tag @product.featured_image, id: "main-image" if @product.featured_image.attached? %>
+                  </div>
+            </div>
+          </div>
+  
+          <div class="col PC-6 Tb-12 ">
+              <div class="item-Buy__frame">
+                  <h3 class="itemBuy-name"><%= @product.name %></h3>            
+                  <div class="  item-price"><span>Giá:</span>  <span class="price"> <%= @product.price %> </span> </div>
+
+                  <%= render "inventory", product: @product %>
+  
+                  <p class="product-description"><%= @product.des %></p>
+                  <%= @product.description %>
+                  <div class="two-btn">
+                    <%= link_to "Back", products_path,  class: "btn" %>
+                    <% if authenticated? %>
+                      <%= link_to "Sửa", edit_product_path(@product) ,  class: "btn" %>
+                      <%= button_to "Xóa", @product, method: :delete,  data: { turbo_confirm: "Are you sure?" }  , class:"btn"%>
+                    <% end %>
+                  </div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <% end %>
