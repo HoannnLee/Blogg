@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    byebug
     @product = Product.new(product_params)
     if @product.save
       redirect_to @product

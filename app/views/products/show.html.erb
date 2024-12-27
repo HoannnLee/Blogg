@@ -21,19 +21,24 @@
                   <%= render "inventory", product: @product %>
   
                   <p class="product-description"><%= @product.des %></p>
-                  <%= @product.description %>
+                  <div class="des">
+                      <%= @product.description %>
+                  </div>                    
                   <div class="two-btn">
-                    <%= link_to "Back", products_path,  class: "btn" %>
                     <% if authenticated? %>
                       <%= link_to "Sửa", edit_product_path(@product) ,  class: "btn" %>
-                      <%= button_to "Xóa", @product, method: :delete,  data: { turbo_confirm: "Are you sure?" }  , class:"btn"%>
+                        <%= button_to "Xóa", @product, method: :delete,  data: { turbo_confirm: "Are you sure?" }  , class:"btn" %>
                     <% end %>
                   </div>
-              </div>
-            
+              </div> 
           </div>
         </div>
       </div>
+
+      <div>
+          <%= link_to "Back", products_path,  class: "btn" %>
+      </div>
+
     </div>
   
   <% end %>
