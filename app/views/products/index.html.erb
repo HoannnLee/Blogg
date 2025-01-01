@@ -1,21 +1,30 @@
-<h1 class="page-title">Products</h1>
 
 <h1><%= t ".title" %></h1>
 
 
 
-   <%= link_to "Thêm sản phẩm" , new_product_path , class: "btn" if authenticated? %>
+<%= link_to "Thêm sản phẩm" , new_product_path , class: "btn" if authenticated? %>
 
-  <div id="products">
-    <ul class ="block">
-      <% @products.each do |product| %>
-          <li class="product-item">
-            <a class="product-link" href="/products/<%= product.id %>">
-              <%= product.name %>
-            </a>
-            
-            <p class="product-price"><%= product.price %></p>
-          </li>
-      <% end %>
-    </ul>
+<% cache @product do %>
+
+  <div class="divice-block__screen">
+      <h3 class="device-Block-heading">
+          <i class="ti-blackboard device-Block-heading__icon"></i>
+          Sản phẩm
+      </h3>
+      <div class="row sTb-gutter">
+          <% @products.each do |product| %>
+            <div class="col PC-3 Tb-4">
+              <a href="/products/<%= product.id %>" class="device-Block__item">
+                    <div  style="background-image:url(./assets/css/Image/Ảnh\ trang\ chủ.jpg);">
+                        # <%= image_tag @product.featured_image,  if @product.featured_image.attached? %>
+                    </div>
+
+                    <h4 class="device-Block__item-name"> <%= product.name %> </h4>
+                    <p class="device-Block__item-price"> <%= product.price %> vnd </p>                                                         
+              </a>
+            </div>
+          <% end %>     
+      </div>
   </div>
+<% end %>

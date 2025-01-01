@@ -23,15 +23,22 @@
   </head>
 
   <body>
-    <div class="notice"><%= notice %></div>
-    <nav class="navbar">
-      <%= link_to "Home", root_path, class: "nav-link" %>
-      <%= link_to "Login", new_session_path unless authenticated? %>
-      <%= button_to "Log out", session_path, method: :delete, class: "logout-btn" if authenticated? %>
-    </nav>
+      <div class="app">
+        <div class="notice"><%= notice %></div>
+        <nav class="navbar">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+          <%= link_to "Login", new_session_path unless authenticated? %>
+          <%= button_to "Log out", session_path, method: :delete, class: "logout-btn" if authenticated? %>
+        </nav>
+    
+        <main class="main-content">
+          <div class="grid wide">
+              <%= yield %>
+          </div>
+        </main>
 
-    <main class="main">
-      <%= yield %>
-    </main>
+        
+      </div>
+  
   </body>
 </html>

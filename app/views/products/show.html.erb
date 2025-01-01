@@ -27,7 +27,7 @@
                   <div class="two-btn">
                     <% if authenticated? %>
                       <%= link_to "Sửa", edit_product_path(@product) ,  class: "btn" %>
-                        <%= button_to "Xóa", @product, method: :delete,  data: { turbo_confirm: "Are you sure?" }  , class:"btn" %>
+                        <%= button_to "Xóa", @product, method: :delete,  data: { turbo_confirm: "Bạn có muốn xoa?" }  , class:"btn" %>
                     <% end %>
                   </div>
               </div> 
