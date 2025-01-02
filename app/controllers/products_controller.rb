@@ -5,7 +5,7 @@
 
 class ProductsController < ApplicationController
 
-  # allow_unauthenticated_access only: %i[ index show ]
+  allow_unauthenticated_access only: %i[ index show ]
 
   before_action :set_product, only: %i[ show edit update destroy ]
 
@@ -23,7 +23,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    byebug
     @product = Product.new(product_params)
     if @product.save
       redirect_to @product
@@ -54,8 +53,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      byebug
-      params.require(:product).permit(:name, :des, :price, :description ,:featured_image,
+      params.require(:product).permit(:name, :des, :price, :description , :featured_image,
       :inventory_count)
     end
 
